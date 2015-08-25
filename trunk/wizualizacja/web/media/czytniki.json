@@ -1,0 +1,47 @@
+{
+  "czytniki":
+  {
+      "czytnik1":
+      {
+        "id": "czyt1",
+        "x":745,
+        "y":520
+      },
+      "czytnik2":
+      {
+        "id": "czyt2",
+        "x":775,
+        "y":330
+      },
+      "czytnik3":
+      {
+        "id": "czyt3",
+        "x":685,
+        "y":295
+      },
+      "czytnik4":
+      {
+        "id": "czyt4",
+        "x":520,
+        "y":295
+      },
+      "czytnik5":
+      {
+        "id": "czyt5",
+        "x":360,
+        "y":295
+      },
+      "czytnik6":
+      {
+        "id": "czyt6",
+        "x":330,
+        "y":295
+      },
+      "czytnik7":
+      {
+        "id": "czyt7",
+        "x":290,
+        "y":320
+      }
+  }
+}

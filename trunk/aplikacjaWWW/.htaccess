@@ -1,0 +1,51 @@
+
+
+
+RewriteEngine On
+RewriteRule ^([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^-]+)(.*).html$ 	/index.php?opcja=$1&rodzaj=$2&page=$3&site=$4&nr=$5 [L]
+RewriteRule ^([^/]*)/([^/]*)/([^/]*)/([^-]+)(.*).html$ 	/index.php?opcja=$1&rodzaj=$2&page=$3&nr=$4 [L]
+RewriteRule ^([^-]+)/([^-]+)/([^-]+)(.*).html$ 		index.php?opcja=$1&rodzaj=$2&nr=$3 [L]
+RewriteRule ^([^-]+)/([^-]+)(.*).html$ 			index.php?opcja=$1&rodzaj=$2 [L]
+
+
+RewriteCond %{HTTP_HOST} !^www. [NC]
+RewriteCond %{HTTP_HOST} ![0-9]$ [NC]
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]
+
+# 2 DAYS
+
+Header append Vary Accept-Encoding
+
+# compress text, html, javascript, css, xml:
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE text/js
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE application/js
+AddOutputFilterByType DEFLATE image/gif
+
+#####################################################
+# CONFIGURE media caching
+#
+Header unset ETag
+FileETag None
+<FilesMatch "(?i)^.*\.(ico|flv|jpg|jpeg|png|gif|js|css)$">
+Header unset Last-Modified
+Header set Expires "Fri, 21 Dec 2022 00:00:00 GMT"
+Header set Cache-Control "public, cache"
+</FilesMatch>
+#
+#####################################################
+
+
+SetOutputFilter DEFLATE
+BrowserMatch ^Mozilla/4\.0[678] no-gzip\
+BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+# Don't compress images

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." name="rozpoznawanie_wzorca">
+    <property environment="env"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+	<property name="emma.dir" value="lib" />
+	<property name="coverage.dir" value="${basedir}/coverage" />
+	<property name="out.instr.dir" value="${basedir}/outinstr" />
+	<path id="emma.lib" >
+		<pathelement location="${emma.dir}/emma.jar" />
+		<pathelement location="${emma.dir}/emma_ant.jar" />
+	</path>
+	<taskdef resource="emma_ant.properties" classpathref="emma.lib" />
+
+    <path id="rozpoznawanie_wzorca.classpath">
+		<path id="mapa_saa">
+			<pathelement location="bin"/>
+		</path>
+        <pathelement location="lib/guice-3.0/guice-3.0.jar"/>
+        <pathelement location="lib/guice-3.0/guice-assistedinject-3.0.jar"/>
+        <pathelement location="lib/guice-3.0/aopalliance.jar"/>
+        <pathelement location="lib/guice-3.0/javax.inject.jar"/>
+        <pathelement location="lib/mysql-connector-java-3.0.17-ga-bin.jar"/>
+        <pathelement location="lib/mockito-all-1.9.0.jar"/>
+        <pathelement location="lib/jtransforms-2.4.jar"/>
+        <pathelement location="lib/guice-3.0/guice-multibindings-3.0.jar"/>
+        <pathelement location="lib/junit-4.10.jar"/>
+    </path>
+	<target name="clean">
+		<delete dir="${coverage.dir}" />
+		<delete dir="${out.instr.dir}" />
+	</target>
+	<target name="emma" description="turns on EMMA instrumentation/reporting" >
+		<property name="emma.enabled" value="true" />
+		<!-- EMMA instr class output directory: -->
+		<mkdir dir="${out.instr.dir}" />
+		<mkdir dir="${coverage.dir}" />
+	</target>
+	<target name="AllTests" depends="clean">
+		<emma enabled="${emma.enabled}" >
+			<instr instrpathref="mapa_saa"
+				destdir="${out.instr.dir}"	
+				metadatafile="${coverage.dir}/metadata.emma"
+				merge="true"
+			>
+			<filter excludes="*Test*" />
+			<filter excludes="*Applet*" />
+			<filter excludes="*core*" />
+			<filter excludes="*Module*" />
+			<filter excludes="*Modul*" />
+			</instr>
+		</emma>
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.AllTests" todir="${junit.output.dir}"/>
+            <classpath>
+				<pathelement location="${out.instr.dir}" />
+				<path refid="rozpoznawanie_wzorca.classpath" />
+				<path refid="emma.lib" />
+			</classpath>
+			<jvmarg value="-Demma.coverage.out.file=${coverage.dir}/coverage.emma" />
+			<jvmarg value="-Demma.coverage.out.merge=true" />
+        </junit>
+		<emma enabled="${emma.enabled}" >
+			<report sourcepath="${src.dir}" >
+				<fileset dir="${coverage.dir}" >
+					<include name="*.emma" />
+				</fileset>
+				<txt outfile="${coverage.dir}/coverage.txt" />
+				<html outfile="${coverage.dir}/coverage.html" />
+				<xml outfile="${coverage.dir}/coverage.xml" />
+			</report>
+		</emma>
+    </target>
+</project>

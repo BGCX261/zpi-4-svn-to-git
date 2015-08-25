@@ -1,0 +1,13 @@
+<project name="AppletTest" default="generate_certificate">
+  <target name="generate_certificate">
+		<exec
+executable="keytool">
+			<arg value="-v" />
+			<arg value="-genkey"/>
+		<arg line="-alias mapasaa" />
+		<arg line='-dname "CN=Mapasaa, OU=, O=, L=Wroclaw, ST=,C=PL"  ' />
+			<arg line="-keypass mapa_saa"/>
+			<arg line="-storepass mapa_saa"/>
+		</exec>
+</target>
+</project>

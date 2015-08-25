@@ -1,0 +1,15 @@
+<project name="AplikacjaWW" default="verify" basedir=".">
+  <description>
+    Prosty skrypt do sprawdzania poprawnosci syntaktycznej plikow php
+  </description>
+ <target name="verify">
+  <apply executable="php" failonerror="true">
+   <arg line="-l" />
+
+   <fileset dir="${basedir}">
+    <include name="**/*.php" />
+   </fileset>
+  
+   </apply>
+ </target>
+</project>

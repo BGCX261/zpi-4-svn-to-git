@@ -1,0 +1,149 @@
+html, body
+{
+margin: 0;
+padding: 0;
+}
+
+label
+{
+display: block;
+float: left;
+text-align: left;
+margin-top: 5px;
+}
+.label
+{
+float: left;
+text-align: right;
+}
+.button
+{
+float: left;
+margin-right: 20px;
+}
+br
+{
+float: left;
+}
+.checkbox
+{
+margin-left: 2px;
+}
+.input
+{
+width: 233px;
+height: 25px;
+}
+
+#error
+{
+color: #f00;
+font-size: 11px;
+}
+
+#logo
+{
+color: #fff;
+width: 83px;
+height: 83px;
+margin: 1px 0 5px 75px;
+}
+
+#logo2
+{
+color: #fff;
+width: 100px;
+height: 100px;
+margin: 50px 0 50px 45%;
+border: 1px solid #000;
+}
+
+#main
+{
+position: absolute;
+left: 120px;
+top: 250px;
+clear: both;
+float: left;
+width: 500px;
+height: 300px;
+border: 1px solid black;
+}
+
+form
+{
+margin: 10px;
+}
+
+.powitanie
+{
+text-align: center;
+margin-top: 5px;
+}
+.login_form, #main
+{
+background-color: #333;
+color: #fff;
+border: 1px solid #663333;
+}
+
+.login_form
+{
+float: left;
+position: absolute;
+left: 750px;
+top: 50px;
+padding: 10px;
+}
+#hello
+{
+font-size: 13pt;
+font-weight: bold;
+text-align: center;
+width: 100%;
+margin-top: 15px;
+margin-bottom: 20px;
+}
+
+h2 { 
+font-size : 15px; 
+font-weight : normal; 
+} 
+
+
+body { 
+background-color : #efe1a4; 
+font-size : 12px; 
+font-family : Verdana, sans-serif;
+} 
+
+#menu_right { 
+float : right; 
+width : 280px; 
+}
+
+/*#header { 
+height : 93px; 
+background-color : #0000cc; 
+}*/
+
+/*.header_s { 
+width : 1237px; 
+margin-left : 90px; 
+}*/
+
+#footer { 
+height : 50px; 
+background-color : #0000cc; 
+line-height : 44px; 
+color : #fff;
+position: absolute;
+left: 0;
+bottom: 0;
+width: 100%;
+}
+
+.l
+{
+margin-left: 100px;
+}

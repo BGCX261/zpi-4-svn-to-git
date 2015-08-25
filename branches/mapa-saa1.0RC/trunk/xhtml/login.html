@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/css" href="login.css" ?>
+<?xml-stylesheet type="text/css" href="style.css" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-language" content="pl" />
+<meta http-equiv="content-style-type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="login.css" />
+<title>Zaloguj</title>
+</head>
+<body>
+<div id="header">
+<div id="logo"><h2>LOGO</h2></div>
+</div> 
+<div id="main"></div>
+<div class="login_form">
+<h2 class="powitanie">Jakiś tekst</h2>
+<form  action="login.php" method="POST">
+<label for="user">Użytkownik:</label><br/><input class="input" type="text" name="user" size="15" /><br/>
+<label for="password">Hasło:</label><br/><input class="input" type="password" name="password" size="15" /><br/>
+				<p id="error"></p>
+<input class="button" type="button" name="login" value="Zaloguj" />
+<label class="label" for="remember"><input class="checkbox" type="checkbox" name="remember" />Zapamiętaj mnie</label><br/>
+</form>
+</div> <!-- login_form -->
+</body>
+</html>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="rozpoznawanie_wzorca">
+    <property environment="env"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="rozpoznawanie_wzorca.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="lib/guice-3.0/guice-3.0.jar"/>
+        <pathelement location="lib/guice-3.0/guice-assistedinject-3.0.jar"/>
+        <pathelement location="lib/guice-3.0/aopalliance.jar"/>
+        <pathelement location="lib/guice-3.0/javax.inject.jar"/>
+        <pathelement location="lib/mysql-connector-java-3.0.17-ga-bin.jar"/>
+        <pathelement location="lib/mockito-all-1.9.0.jar"/>
+        <pathelement location="lib/jtransforms-2.4.jar"/>
+        <pathelement location="lib/guice-3.0/guice-multibindings-3.0.jar"/>
+        <pathelement location="lib/junit-4.10.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="CreateServiceTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="uslugi.tests.CreateServiceTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="SocketServer">
+        <java classname="socket.SocketServer" failonerror="true" fork="yes">
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </java>
+    </target>
+    <target name="DodawaczOdciskowTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="czytnik.tests.DodawaczOdciskowTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="ImageReaderTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="socket.tests.ImageReaderTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="ObrazTest (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="algorytm.tests.ObrazTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="Frame">
+        <java classname="core.Frame" failonerror="true" fork="yes">
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </java>
+    </target>
+    <target name="DodawaczOdciskow">
+        <java classname="czytnik.DodawaczOdciskow" failonerror="true" fork="yes">
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </java>
+    </target>
+    <target name="AuthorizationServiceTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="uslugi.tests.AuthorizationServiceTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="WeryfikatorOdciskowTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="czytnik.tests.WeryfikatorOdciskowTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="ReadServiceTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="uslugi.tests.ReadServiceTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="czytnik.tests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="czytnik.tests.CzytnikTestSuite" todir="${junit.output.dir}"/>
+            <test name="czytnik.tests.DaneCzytnikaTest" todir="${junit.output.dir}"/>
+            <test name="czytnik.tests.DodawaczOdciskowTest" todir="${junit.output.dir}"/>
+            <test name="czytnik.tests.WeryfikatorOdciskowTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="UslugiTestSuite">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="uslugi.tests.UslugiTestSuite" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="FingerprintAddStrategyTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="uslugi.tests.FingerprintAddStrategyTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="AlgorytmTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="algorytm.tests.AlgorytmTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="Applet">
+        <java classname="sun.applet.AppletViewer" dir="." failonerror="true" fork="yes">
+            <arg line="Applet.html"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </java>
+    </target>
+    <target name="FingerprintReadingStrategyTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="uslugi.tests.FingerprintReadingStrategyTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="DatabaseFacadeTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="baza_danych.tests.DatabaseFacadeTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="DatabaseFacadeTest.testWyslijKwerendeUpdateWyjatekNieStworzonoStatement">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="baza_danych.tests.DatabaseFacadeTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="AllTests">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.AllTests" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="FeatureExtractor">
+        <java classname="algorytm.FeatureExtractor" failonerror="true" fork="yes">
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </java>
+    </target>
+    <target name="SocketServerTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="socket.tests.SocketServerTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="ObrazTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="algorytm.ObrazTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="HashUzytkownikaTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="algorytm.tests.HashUzytkownikaTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="FeatureExtractorTest.testShiftZeroFrequencyToCenterNieparzysty">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="algorytm.tests.FeatureExtractorTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="TestAlgorytmu">
+        <java classname="test.TestAlgorytmu" failonerror="true" fork="yes">
+            <arg line="2.5"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </java>
+    </target>
+    <target name="TestClass">
+        <java classname="applet.TestClass" failonerror="true" fork="yes">
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </java>
+    </target>
+    <target name="SektoryzatorObrazuTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="algorytm.tests.SektoryzatorObrazuTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="AuthorizationMain">
+        <java classname="core.AuthorizationMain" failonerror="true" fork="yes">
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </java>
+    </target>
+    <target name="DaneCzytnikaTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="czytnik.tests.DaneCzytnikaTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="GroupAuthorizationMethodTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="autoryzacja.tests.GroupAuthorizationMethodTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="FeatureExtractorTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="algorytm.tests.FeatureExtractorTest" todir="${junit.output.dir}"/>
+            <classpath refid="rozpoznawanie_wzorca.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>

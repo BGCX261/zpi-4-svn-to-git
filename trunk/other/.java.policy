@@ -1,0 +1,12 @@
+
+/* PERMISSIONS ADDED BY JavaPolicyEditor BEGIN */
+grant codeBase "http://tams-www.informatik.uni-hamburg.de/applets/hades/webdemos/-" {
+  permission javax.sound.sampled.AudioPermission "play";
+  permission java.util.PropertyPermission "*", "read,write";
+  permission java.util.LoginPermission "*", "control";
+  permission java.lang.RuntimePermission "createClassLoader";
+  permission java.lang.RuntimePermission "getClassLoader";
+  permission java.lang.RuntimePermission "getProtectionDomain";
+};
+/* PERMISSIONS ADDED BY JavaPolicyEditor END */
+

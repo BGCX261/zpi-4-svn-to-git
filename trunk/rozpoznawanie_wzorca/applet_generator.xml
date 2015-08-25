@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="Applet" default="sign">
+    <target name="stworz_jar" depends="clean">
+      <mkdir dir="applet" />
+      <jar destfile="applet/applet.jar" basedir="bin" />
+    </target>
+    <target name="clean">
+      <delete dir="applet/lib" />
+      <delete file="applet/applet.jar" />
+    </target>
+    <target name="sign" depends="stworz_jar">
+      <copy todir="applet/lib">
+        <fileset dir="lib" />
+      </copy>
+      <signjar alias="mapasaa" storepass="mapa_saa" >
+        <path>
+          <fileset dir="applet" includes="**/*.jar" />
+        </path>
+      </signjar>
+    </target>
+</project>
